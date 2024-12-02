@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sona's Work</title>
+    <link rel="stylesheet" href="./css/view.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">S.</a>
+            <div class="nav-links">
+                <a href="about.html">About</a>
+                <a href="#">Work</a>
+                <a href="project.html">Experience</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>My Work</h1>
+            <p class="subtitle">Exploring creativity through design and development</p>
+
+            <div class="filter-buttons">
+                <button class="filter-button active" data-category="all">All Projects</button>
+                <button class="filter-button" data-category="web">Web Development</button>
+                <button class="filter-button" data-category="design">Database</button>
+                <button class="filter-button" data-category="app">Mobile Apps</button>
+            </div>
+        </header>
+
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Projects will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        // Project data
+        const projects = [
+            {
+                title: "E-commerce Website",
+                category: "web",
+                description: "A fully responsive e-commerce platform built with React and Node.js",
+                image: "/api/placeholder/400/320",
+                link: "#"
+            },
+            {
+                title: "Travel App Design",
+                category: "design",
+                description: "UI/UX design for a travel planning application",
+                image: "/api/placeholder/400/320",
+                link: "#"
+            },
+            {
+                title: "Fitness Tracker App",
+                category: "app",
+                description: "Mobile app for tracking workouts and nutrition",
+                image: "/api/placeholder/400/320",
+                link: "#"
+            },
+            {
+                title: "Portfolio Website",
+                category: "web",
+                description: "Personal portfolio website with custom animations",
+                image: "/api/placeholder/400/320",
+                link: "#"
+            },
+            {
+                title: "Restaurant Interface",
+                category: "design",
+                description: "Modern interface design for a restaurant chain",
+                image: "/api/placeholder/400/320",
+                link: "#"
+            },
+            {
+                title: "Weather App",
+                category: "app",
+                description: "Real-time weather tracking application",
+                image: "/api/placeholder/400/320",
+                link: "#"
+            }
+        ];
+
+        // Function to create project card
+        function createProjectCard(project) {
+            return `
+                <div class="project-card fade" data-category="${project.category}">
+                    <div class="project-image" style="background-image: url('${project.image}')"></div>
+                    <div class="project-info">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-category">${project.category.charAt(0).toUpperCase() + project.category.slice(1)}</p>
+                        <p class="project-description">${project.description}</p>
+                        <a href="${project.link}" class="project-link">View Project</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to filter projects
+        function filterProjects(category) {
+            const projectsGrid = document.getElementById('projectsGrid');
+            projectsGrid.innerHTML = '';
+
+            const filteredProjects = category === 'all'
+                ? projects
+                : projects.filter(project => project.category === category);
+
+            filteredProjects.forEach(project => {
+                projectsGrid.innerHTML += createProjectCard(project);
+            });
+        }
+
+        // Initial load of all projects
+        filterProjects('all');
+
+        // Add click event listeners to filter buttons
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.addEventListener('click', function () {
+                // Update active button
+                document.querySelector('.filter-button.active').classList.remove('active');
+                this.classList.add('active');
+
+                // Filter projects
+                const category = this.getAttribute('data-category');
+                filterProjects(category);
+            });
+        });
+    </script>
+</body>
+
+</html>

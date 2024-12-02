@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sona's Projects - Database & Frontend Portfolio</title>
+    <link rel="stylesheet" href="./css/project.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">S.</a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="about.html">About</a>
+                <a href="#">Work</a>
+                <a href="project.html">Experience</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- end -->
+
+    <!-- Project content -->
+    <div class="projects-container">
+        <h1 class="section-title">My Projects</h1>
+
+        <div class="category-tabs">
+            <button class="category-tab active" data-category="all">All Projects</button>
+            <button class="category-tab" data-category="database">Database Projects</button>
+            <button class="category-tab" data-category="frontend">Frontend Projects</button>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Database Projects -->
+            <div class="project-card" data-category="database">
+                <div class="project-image" style="background-image: url('https://via.placeholder.com/400x200')">
+                    <img src="./images/MAnagement.jpg" style="height: 200px; width: 680px;">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Healthcare Database System</h3>
+                    <p class="project-description">Designed and implemented a comprehensive healthcare database system
+                        managing patient records, appointments, and medical history.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">SQL</span>
+                        <span class="project-tag">PostgreSQL</span>
+                        <span class="project-tag">Database Design</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Details</a>
+                        <a href="#" class="project-link">Live Demo</a>
+                    </div>
+                    <button class="animated-button">Learn More</button>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="database">
+                <div class="project-image" style="background-image: url('https://via.placeholder.com/400x200')">
+                    <img src="./images/e-commerce.png" style="height: 200px; width: 680px;">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">E-commerce Database Optimization</h3>
+                    <p class="project-description">Optimized database performance for a large-scale e-commerce platform,
+                        improving query response time by 40%.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">MongoDB</span>
+                        <span class="project-tag">NoSQL</span>
+                        <!-- <span class="project-tag">Performance Tuning</span> -->
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Details</a>
+                        <a href="#" class="project-link">Case Study</a>
+                    </div>
+                    <button class="animated-button">Learn More</button>
+                </div>
+            </div>
+
+            <!-- Frontend Projects -->
+            <div class="project-card" data-category="frontend">
+                <div class="project-image" style="background-image: url('https://via.placeholder.com/400x200')">
+                    <img src="./images/real estate.png" style="height: 200px; width: 360px;">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Real Estate Dashboard</h3>
+                    <p class="project-description">Developed a responsive real estate dashboard with interactive
+                        property listings and advanced filtering options.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">Tailwind CSS</span>
+                        <span class="project-tag">Chart.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Project</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                    <button class="animated-button">Explore More</button>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="frontend">
+                <div class="project-image" style="background-image: url('https://via.placeholder.com/400x200')">
+                    <img src="./images/dropdown.png" style="height: 200px; width: 356px;">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Task Management App</h3>
+                    <p class="project-description">Built a modern task management application with drag-and-drop
+                        functionality and real-time updates.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Vue.js</span>
+                        <span class="project-tag">Vuex</span>
+                        <span class="project-tag">Firebase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">Source Code</a>
+                    </div>
+
+                    <button class="animated-button">View More</button>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        //........... Navbar Script
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Close menu when window is resized above mobile breakpoint
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 767) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Handle keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // ...........end
+
+        // ............project  script
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.category-tab');
+            const projects = document.querySelectorAll('.project-card');
+
+            // Filter projects based on category
+            function filterProjects(category) {
+                projects.forEach(project => {
+                    const projectCategory = project.dataset.category;
+                    if (category === 'all' || category === projectCategory) {
+                        project.style.display = 'block';
+                        project.classList.add('animate-fade-in');
+                    } else {
+                        project.style.display = 'none';
+                        project.classList.remove('animate-fade-in');
+                    }
+                });
+            }
+
+            // Tab click handler
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    // Filter projects
+                    filterProjects(tab.dataset.category);
+                });
+            });
+
+            // Initialize with all projects
+            filterProjects('all');
+        });
+    </script>
+
+</body>
+
+</html>
